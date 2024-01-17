@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    {% block content %}
+    <div id="sign-up-form">{% comment %}  form for signup {% endcomment %}
+    <form action="" method="post">
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="middle_name" placeholder="Middle Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+        Gender:
+        <input type="radio" name="gender" value="m">Male
+        <input type="radio" name="gender" value="f">Female
+        <input type="radio" name="gender" value="o">Other
+
+        <input type="email" name="email" placeholder="Email Id">
+        <input type="number" name="mobile" placeholder="Mobile Number">
+
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="confirm_password" placeholder="Confirm Password">
+
+        <input type="checkbox" name="newsletter">I want to recieve newsletter.
+
+        <button type="submit">Submit</button>
+        <a href="">Already have an account? Login</a>
+    </form>
+    </div>
+    {% endblock %}
