@@ -1,25 +1,43 @@
 {% extends "base.html" %}
-    {% block content %}
-    <div id="sign-up-form">{% comment %}  form for signup {% endcomment %}
+{% block title %}Sign-Up{% endblock %}
+{% block content %}
+<div id="sign-up-form">{% comment %} form for signup {% endcomment %}
+
     <form action="" method="post">
-        <input type="text" name="first_name" placeholder="First Name">
-        <input type="text" name="middle_name" placeholder="Middle Name">
-        <input type="text" name="last_name" placeholder="Last Name">
+        {% csrf_token %}
+        <span id="error-message">{% if form.non_field_errors %}<strong>Error:</strong> {{ form.non_field_errors.0 }}</span>{% endif %}
+
+        <input type="text" name="first_name" placeholder="First Name" >
+        <span class="error-message">{{ form.first_name.errors.0 }}</span>
+
+        <input type="text" name="middle_name" placeholder="Middle Name" >
+        <span class="error-message">{{ form.middle_name.errors.0 }}</span>
+
+        <input type="text" name="last_name" placeholder="Last Name" >
+        <span class="error-message">{{ form.last_name.errors.0 }}</span>
+
         Gender:
-        <input type="radio" name="gender" value="m">Male
-        <input type="radio" name="gender" value="f">Female
-        <input type="radio" name="gender" value="o">Other
+        <input type="radio" name="gender" value="m" ><label>Male</label>
+        <input type="radio" name="gender" value="f" ><label>Female</label>
+        <input type="radio" name="gender" value="o" ><label>Other</label>
+        <span class="error-message">{{ form.gender.errors.0 }}</span>
 
-        <input type="email" name="email" placeholder="Email Id">
-        <input type="number" name="mobile" placeholder="Mobile Number">
+        <input type="email" name="email" placeholder="Email Id" >
+        <span class="error-message">{{ form.email.errors.0 }}</span>
 
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirm_password" placeholder="Confirm Password">
+        <input type="number" name="mobile" placeholder="Mobile Number" >
+        <span class="error-message">{{ form.mobile.errors.0 }}</span>
 
-        <input type="checkbox" name="newsletter">I want to recieve newsletter.
+        <input type="password" name="password" placeholder="Password" >
+        <span class="error-message">{{ form.password.errors.0 }}</span>
+
+        <input type="password" name="confirm_password" placeholder="Confirm Password" >
+        <span class="error-message">{{ form.confirm_password.errors.0 }}</span>
+
+        <input type="checkbox" name="newsletter">I want to receive the newsletter.
 
         <button type="submit">Submit</button>
         <a href="">Already have an account? Login</a>
     </form>
-    </div>
-    {% endblock %}
+</div>
+{% endblock %}
