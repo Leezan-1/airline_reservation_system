@@ -54,8 +54,6 @@ class LoginForm(forms.Form):
 
     def cleaned_email(self):
         email = self.cleaned_data.get('email')
-    
-        if UserProfile.objects.filter(email=email).exists
 
     def cleaned_email(self):
         email = self.cleaned_data.get('email')
