@@ -16,7 +16,7 @@
         <input type="text" name="last_name" placeholder="Last Name" >
         <span class="error-message">{{ form.last_name.errors.0 }}</span>
 
-        Gender:
+        <label>Gender:</label>
         <input type="radio" name="gender" value="m" ><label>Male</label>
         <input type="radio" name="gender" value="f" ><label>Female</label>
         <input type="radio" name="gender" value="o" ><label>Other</label>
@@ -34,7 +34,7 @@
         <input type="password" name="confirm_password" placeholder="Confirm Password" >
         <span class="error-message">{{ form.confirm_password.errors.0 }}</span>
 
-        <input type="checkbox" name="newsletter">I want to receive the newsletter.
+        <input type="checkbox" name="newsletter"><label>I want to receive the newsletter.</label>
 
         <button type="submit">Submit</button>
         <a href="">Already have an account? Login</a>

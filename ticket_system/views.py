@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from .models import UserProfile
 
+# view that processes for sign-up.html and signup form
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)

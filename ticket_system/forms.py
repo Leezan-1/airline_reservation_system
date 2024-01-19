@@ -21,10 +21,10 @@ class SignUpForm(forms.Form):
     middle_name = forms.CharField(required=True,max_length=50, validators=[validate_alpha])
     last_name = forms.CharField(required=True,max_length=50, validators=[validate_alpha])
     gender = forms.ChoiceField(required=True,choices=[('m', 'Male'), ('f', 'Female'), ('o', 'Other')])
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True, max_length=50)
     mobile = forms.CharField(required=True,max_length=10, validators=[validate_mobile])
-    password = forms.CharField(required=True,widget=forms.PasswordInput(), validators=[validate_password])
-    confirm_password = forms.CharField(required=True,widget=forms.PasswordInput())
+    password = forms.CharField(required=True,max_length=20,widget=forms.PasswordInput(), validators=[validate_password])
+    confirm_password = forms.CharField(required=True,max_length=20,widget=forms.PasswordInput())
     newsletter = forms.BooleanField(required=False)
 
     def clean_confirm_password(self):
@@ -47,3 +47,15 @@ class SignUpForm(forms.Form):
         if UserProfile.objects.filter(mobile=mobile).exists():
             raise forms.ValidationError("This mobile number is already in use.")
         return mobile
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(required=True,max_length=50)
+    password = forms.CharField(required=True, max_length=20)
+
+    def cleaned_email(self):
+        email = self.cleaned_data.get('email')
+    
+        if UserProfile.objects.filter(email=email).exists
+
+    def cleaned_email(self):
+        email = self.cleaned_data.get('email')
