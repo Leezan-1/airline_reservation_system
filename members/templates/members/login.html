@@ -9,12 +9,12 @@
 
             {% comment %} Inputs email address as username {% endcomment %}
             <label for="Email">Email Address</label>
-            <input type="email" name="email" placeholder="Email Id">
+            <input type="email" name="email" placeholder="Email Id" required>
             <span class="error-message">{{ form.email.errors.0 }}</span>
 
             {% comment %} inputs password for user authentication {% endcomment %}
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password" required>
             <span class="error-message">{{ form.password.errors.0 }}</span>
 
             <button type="submit" value="login">Login</button>
