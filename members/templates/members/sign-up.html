@@ -7,36 +7,47 @@
         {% csrf_token %}
         <span id="error-message">{% if form.non_field_errors %}<strong>Error:</strong> {{ form.non_field_errors.0 }}</span>{% endif %}
 
+        {% comment %} inputs firstname {% endcomment %}
         <input type="text" name="first_name" placeholder="First Name" >
         <span class="error-message">{{ form.first_name.errors.0 }}</span>
 
+        {% comment %} inputs middle name {% endcomment %}
         <input type="text" name="middle_name" placeholder="Middle Name" >
         <span class="error-message">{{ form.middle_name.errors.0 }}</span>
 
+        {% comment %} inputs last name  {% endcomment %}
         <input type="text" name="last_name" placeholder="Last Name" >
         <span class="error-message">{{ form.last_name.errors.0 }}</span>
 
+        {% comment %} selects gender  {% endcomment %}
         <label>Gender:</label>
         <input type="radio" name="gender" value="m" ><label>Male</label>
         <input type="radio" name="gender" value="f" ><label>Female</label>
         <input type="radio" name="gender" value="o" ><label>Other</label>
         <span class="error-message">{{ form.gender.errors.0 }}</span>
 
+        {% comment %} inputs email  {% endcomment %}
         <input type="email" name="email" placeholder="Email Id" >
         <span class="error-message">{{ form.email.errors.0 }}</span>
 
+        {% comment %} inputs mobile number {% endcomment %}
         <input type="number" name="mobile" placeholder="Mobile Number" >
         <span class="error-message">{{ form.mobile.errors.0 }}</span>
 
+        {% comment %} inputs password {% endcomment %}
         <input type="password" name="password" placeholder="Password" >
         <span class="error-message">{{ form.password.errors.0 }}</span>
 
+        {% comment %} inputs confirm password {% endcomment %}
         <input type="password" name="confirm_password" placeholder="Confirm Password" >
         <span class="error-message">{{ form.confirm_password.errors.0 }}</span>
 
-        <input type="checkbox" name="newsletter"><label>I want to receive the newsletter.</label>
+        {% comment %} inputs user choice for newsletter subscription {% endcomment %}
+        <input type="checkbox" name="newsletter" default:"checked"><label>I want to receive the newsletter.</label>
 
         <button type="submit">Submit</button>
+
+        {% comment %} redirects to login {% endcomment %}
         <a href="">Already have an account? Login</a>
     </form>
 </div>

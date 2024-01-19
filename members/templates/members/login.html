@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}login{% endblock %}
+
+{% block content %}
+    <div class="login-form"> 
+        {% comment %} This is the login form for authentication {% endcomment %}
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {% comment %} Inputs email address as username {% endcomment %}
+            <label for="Email">Email Address</label>
+            <input type="email" name="email" placeholder="Email Id">
+            <span class="error-message">{{ form.email.errors.0 }}</span>
+
+            {% comment %} inputs password for user authentication {% endcomment %}
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Password">
+            <span class="error-message">{{ form.password.errors.0 }}</span>
+
+            <button type="submit" value="login">Login</button>
+        </form>
+    </div>
+{% endblock %}

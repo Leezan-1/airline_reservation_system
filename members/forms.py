@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from django.core.exceptions import ValidationError
+from django.core.validators import EmailValidator, integer_validator
 from .models import UserProfile
 
 def validate_alpha(value): #validates if names are only alphabets
@@ -17,6 +18,7 @@ def validate_password(value):
 
 
 class SignUpForm(forms.Form):
+    # this class provides validation for signup form
     first_name = forms.CharField(required=True,max_length=50, validators=[validate_alpha])
     middle_name = forms.CharField(required=True,max_length=50, validators=[validate_alpha])
     last_name = forms.CharField(required=True,max_length=50, validators=[validate_alpha])
@@ -28,6 +30,7 @@ class SignUpForm(forms.Form):
     newsletter = forms.BooleanField(required=False)
 
     def clean_confirm_password(self):
+        # this function checks if password and confirm password matches
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
 
@@ -37,23 +40,20 @@ class SignUpForm(forms.Form):
         return confirm_password
     
     def clean_email(self):
+        # this function checks if same email is used by anyone in database
         email = self.cleaned_data['email']
         if UserProfile.objects.filter(email=email).exists():
             raise forms.ValidationError("This email is already in use.")
         return email
 
     def clean_mobile(self):
+        # this function checks if same mobile is used by anyone in database
         mobile = self.cleaned_data['mobile']
         if UserProfile.objects.filter(mobile=mobile).exists():
             raise forms.ValidationError("This mobile number is already in use.")
         return mobile
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(required=True,max_length=50)
-    password = forms.CharField(required=True, max_length=20)
-
-    def cleaned_email(self):
-        email = self.cleaned_data.get('email')
-
-    def cleaned_email(self):
-        email = self.cleaned_data.get('email')
+    # this class provides validation for login form 
+    email = forms.EmailField(required=True,max_length=50, validators=[EmailValidator()])
+    password = forms.CharField(required=True, max_length=20,validators=[validate_password])
