@@ -7,24 +7,25 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def signup(request):
     if request.method == 'POST':
+        print('skladjflsakdjf')
         form = SignUpForm(request.POST)
+
         if form.is_valid():
             # Form is valid, save data to the database
-            data = form.cleaned_data
-            user_profile = UserProfile.objects.create(
-                first_name=data['first_name'],
-                middle_name=data['middle_name'],
-                last_name=data['last_name'],
-                gender=data['gender'],
-                email=data['email'],
-                mobile=data['mobile'],
-                password=data['password'],
-                newsletter=data['newsletter'],
-            )
+            print('valid')
+            print(form.cleaned_data)
+            user = form.save()
+            if user:
+                print('save')
+            else:
+                print('notsaved')
             # Redirect to the login page upon successful completion
-            return redirect('login')
+            return redirect('log-in')
+        else:
+            print('form errors:', form.errors)
     else:
         form = SignUpForm()
+
 
     return render(request, 'members/sign-up.html', {'form': form})
 
