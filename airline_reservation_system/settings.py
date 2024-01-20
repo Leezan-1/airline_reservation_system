@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ticket_system',
-    'members',
+    'ticket_system', # ticket_system django app
+    'members',  # members djago app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates', 
+            BASE_DIR / 'templates', # searches main template folder for html files
         ],
         'APP_DIRS': True,
         'OPTIONS': {

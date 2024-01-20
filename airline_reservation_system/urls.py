@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("members/", include('django.contrib.auth.urls')),
-    path("members/", include('members.urls')),
-    path("", include("ticket_system.urls"))
+    path('admin/', admin.site.urls), # adds admin previlages, builtin admin portal
+    path("members/", include('django.contrib.auth.urls')),  # adds authentication urls, function for members app
+    path("members/", include('members.urls')),  #/members/ route 
+    path("", include("ticket_system.urls")) # home route
 ]
