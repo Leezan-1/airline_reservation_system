@@ -19,8 +19,7 @@ def signup(request):
 
             # Redirect to the success page upon successful completion
             return redirect('index')
-        else:
-            print('form errors:', form.errors)
+        
     else:
         form = SignUpForm()
 
@@ -45,3 +44,7 @@ def login_user(request):
         form = LoginForm()
 
     return render(request, 'members/login.html', {'form': form})
+
+def logout_user(request):
+    logout(request)
+    return redirect('log-in')

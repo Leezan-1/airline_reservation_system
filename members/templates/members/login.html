@@ -6,7 +6,7 @@
         {% comment %} This is the login form for authentication {% endcomment %}
         <form action="" method="post">
             {% csrf_token %}
-
+            <a href="{% url "index" %}">Home</a>
             {% comment %} Inputs email address as username {% endcomment %}
             <label for="Email">Email Address</label>
             <input type="email" name="email" placeholder="Email Id" required>
