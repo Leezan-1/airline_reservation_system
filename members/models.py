@@ -13,8 +13,9 @@ class UserProfile(models.Model):
     gender = models.CharField(max_length=1, choices=[(
         'm', 'Male'), ('f', 'Female'), ('o', 'Other')])
     mobile = models.CharField(unique=True, max_length=10, validators=[RegexValidator(
-        regex='^[0-9]{10}$', message='Mobile number must be 10 digits long.')])
-
+        regex='^[0-9]{10}$', message='Mobile number must be 10 digits long.')])    
+    nationality = models.CharField(max_length=50, blank=True, default='', validators=[RegexValidator(
+        regex='^[A-Za-z]*$', message='Only alphabets are allowed.')])
     newsletter = models.BooleanField(default=False)
 
     def __str__(self):

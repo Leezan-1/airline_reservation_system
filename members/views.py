@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from members.forms import SignUpForm, LoginForm
+from members.forms import SignUpForm, LoginForm, EditProfileForm
 from members.models import UserProfile
 
 from django.contrib.auth import authenticate, login, logout
@@ -48,3 +48,12 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('log-in')
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+            return redirect('index')
+    else:
+        form = EditProfileForm()
+    return render('members/edit-profile.html')

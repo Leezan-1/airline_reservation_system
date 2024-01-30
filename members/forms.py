@@ -98,3 +98,17 @@ class LoginForm(forms.Form):
             message='Password must be 8 to 20 characters long and contain at least 1 number and 1 symbol.'
         )
     ])
+
+class EditProfileForm(forms.Form):
+
+    first_name = forms.CharField(required=True, max_length=50, validators=[
+                                 RegexValidator(regex='^[A-Za-z]*$', message='Only alphabets are allowed.')])
+
+    middle_name = forms.CharField(required=True, max_length=50, validators=[
+                                  RegexValidator(regex='^[A-Za-z]*$', message='Only alphabets are allowed.')])
+
+    last_name = forms.CharField(required=True, max_length=50, validators=[
+                                RegexValidator(regex='^[A-Za-z]*$', message='Only alphabets are allowed.')])
+
+    gender = forms.ChoiceField(required=True, choices=[(
+        'm', 'Male'), ('f', 'Female'), ('o', 'Other')])

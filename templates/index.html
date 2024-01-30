@@ -2,10 +2,11 @@
 {% block title %}Airlines{% endblock %}
 {% block content %}
     <a href="{% url "sign-up" %}">Sign Up</a>
-    {% if user.is_authenticated %}
+    {% if not user.is_authenticated %}
+        <a href="{% url "log-in" %}">Login</a>
+    {% else %}
         <a href="{% url "log-out" %}">Logout</a>
         <h1>Welcome, {{ user.first_name }} </h1>
-    {% else %}
-        <a href="{% url "log-in" %}">Login</a>
+        <a href="{% url "edit-profile" %}">Edit Profile</a>
     {% endif %}
 {% endblock %}
